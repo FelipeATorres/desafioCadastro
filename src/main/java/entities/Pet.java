@@ -1,21 +1,26 @@
 package entities;
 
+import enums.PetSex;
+import enums.PetType;
+
 public class Pet {
     private String name;
-    private String type;
-    private String sex;
+    private PetType petType;
+    private PetSex petSex;
     private String address;
-    private Integer age;
+    private Double age;
     private Double weight;
     private String breed;
+
+    private static final String NAO_INFORMADO = "Não informado";
 
     public Pet(){
     }
 
-    public Pet(String name, String type, String sex, String address, int age, double weight, String breed) {
+    public Pet(String name, PetType petType, PetSex petSex, String address, Double age, Double weight, String breed) {
         this.name = name;
-        this.type = type;
-        this.sex = sex;
+        this.petType = petType;
+        this.petSex = petSex;
         this.address = address;
         this.age = age;
         this.weight = weight;
@@ -30,20 +35,20 @@ public class Pet {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public PetType getPetType() {
+        return petType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setPetType(PetType petType) {
+        this.petType = petType;
     }
 
-    public String getSex() {
-        return sex;
+    public PetSex getPetSex() {
+        return petSex;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setPetSex(PetSex petSex) {
+        this.petSex = petSex;
     }
 
     public String getAddress() {
@@ -54,19 +59,19 @@ public class Pet {
         this.address = address;
     }
 
-    public int getAge() {
+    public Double getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Double age) {
         this.age = age;
     }
 
-    public double getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 

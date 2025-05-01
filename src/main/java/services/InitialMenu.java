@@ -30,6 +30,7 @@ public class InitialMenu {
                 case 1:
                     Pet pet = new Pet();
                     FormData.formReader(sc,form,pet);
+                    PetData.save(pet);
                     break;
                 case 2:
                     System.out.println("Alterar dados");

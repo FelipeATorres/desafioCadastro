@@ -7,15 +7,16 @@ import services.InitialMenu;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws DomainException {
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
 
         Path direct = Paths.get("src/main/java/arquivos");
         Path form = Paths.get(direct.toString(), "formulario.txt");
-
-        Scanner sc = new Scanner(System.in);
 
         while (true) {
             try {
@@ -26,7 +27,7 @@ public class Main {
 
             }
             catch (IOException | DomainException e) {
-                System.err.println("ERRO: " + e.getMessage() + "\n");
+                System.err.println("\nERRO: " + e.getMessage() + "\n");
             }
         }
     }

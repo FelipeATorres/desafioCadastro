@@ -1,8 +1,10 @@
 package services;
 
 import entities.Pet;
+import enums.PetSex;
+import enums.PetType;
 import exceptions.DomainException;
-import utils.PetName;
+import utils.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -51,31 +53,38 @@ public class FormData {
             sc.nextLine();
             String name = sc.nextLine().trim();
             PetName.verify(name);
-            pet.setName(name);
+            pet.setName(Capitalize.strings(name));
             line = br.readLine();
 
             /// tipo do pet cachorro/gato
             System.out.println(line);
-            String type = sc.nextLine();
-            pet.setType(type);
+            pet.setPetType(PetType.valueOf(sc.nextLine().toUpperCase()));
             line = br.readLine();
 
             /// sexo do pet
             System.out.println(line);
-            String sex = sc.nextLine();
-            pet.setSex(sex);
+            pet.setPetSex(PetSex.valueOf(sc.nextLine().toUpperCase()));
             line = br.readLine();
 
             /// endereço do pet
             System.out.println(line);
-            String address = sc.nextLine();
+            System.out.println("I. Número da casa: ");
+            int numHouse= sc.nextInt();
+            sc.nextLine();
+            System.out.println("II. Cidade: ");
+            String city = sc.nextLine();
+            System.out.println("III. Rua: ");
+            String street = sc.nextLine();
+            String address = "";
+            address = address.concat(street + ", " + numHouse + ", " + city);
             pet.setAddress(address);
             line = br.readLine();
 
             /// idade do pet
             System.out.println(line);
-            int age = sc.nextInt();
+            double age = sc.nextDouble();
             sc.nextLine();
+            AgeValidate.verify(age);
             pet.setAge(age);
             line = br.readLine();
 
@@ -83,14 +92,15 @@ public class FormData {
             System.out.println(line);
             double weight = sc.nextDouble();
             sc.nextLine();
+            WeightValidate.verify(weight);
             pet.setWeight(weight);
             line = br.readLine();
 
             /// raça do pet
             System.out.println(line);
             String breed = sc.nextLine();
-            pet.setBreed(breed);
-
+            SpecialCharacterString.verify(breed);
+            pet.setBreed(Capitalize.strings(breed));
         }
     }
 }

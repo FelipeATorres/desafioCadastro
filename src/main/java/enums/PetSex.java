@@ -1,6 +1,6 @@
 package enums;
 
-public enum Sex {
+public enum PetSex {
     MACHO,
     FEMEA;
 }
