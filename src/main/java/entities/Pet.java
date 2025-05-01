@@ -12,8 +12,6 @@ public class Pet {
     private Double weight;
     private String breed;
 
-    private static final String NAO_INFORMADO = "Não informado";
-
     public Pet(){
     }
 

@@ -1,7 +1,10 @@
 package services;
 
 import entities.Pet;
+import enums.PetType;
 import exceptions.DomainException;
+import utils.IsNull;
+import utils.PetTypeAndSex;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -13,30 +16,27 @@ import java.time.format.DateTimeFormatter;
 
 public class PetData {
     private static final Path cadastros = Paths.get("src/main/java/arquivos/petsCadastrados");
-    private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyyMMddTHHmm");
+    private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
 
     public static void save(Pet pet) throws IOException, DomainException {
         Files.createDirectories(cadastros);
         try{
-            String registerDate = String.valueOf(LocalDateTime.now());
-            String fileName = "";
-            fileName = fileName.concat(
-                    String.valueOf(LocalDateTime.parse(registerDate,fmt)) +
-                    "-" +
+            LocalDateTime registerDate = LocalDateTime.now();
+            String fileName = fmt.format(registerDate) + "-" +
                     pet.getName().toUpperCase().replace(" ","") +
-                    ".txt");
+                    ".txt";
             Path archiveName = Paths.get(String.valueOf(cadastros), fileName);
 
             if (!Files.exists(archiveName)){
                 Files.createFile(archiveName);
                 String[] data = new String[]{
-                        "1 - " + pet.getName() + "\n" +
-                        "2 - " + pet.getPetType() + "\n" +
-                        "3 - " + pet.getPetSex() + "\n" +
+                        "1 - " + IsNull.verifyString(pet.getName()) + "\n" +
+                        "2 - " + PetTypeAndSex.verifyType(pet.getPetType()) + "\n" +
+                        "3 - " + PetTypeAndSex.verifySex(pet.getPetSex()) + "\n" +
                         "4 - " + pet.getAddress() + "\n" +
-                        "5 - " + pet.getAge() + "\n" +
-                        "6 - " + pet.getWeight() + "\n" +
-                        "7 - " + pet.getBreed() + "\n"};
+                        "5 - " + String.format("%s anos",IsNull.verifyDouble(pet.getAge())) + "\n" +
+                        "6 - " + String.format("%skg",IsNull.verifyDouble(pet.getWeight())) + "\n" +
+                        "7 - " + IsNull.verifyString(pet.getBreed())};
 
                 try (BufferedWriter bw = Files.newBufferedWriter(archiveName)){
                     for (String line : data){
@@ -46,6 +46,7 @@ public class PetData {
 
                 }
             }
+            System.out.println("Pet cadastrado com sucesso!");
         }
         catch (IOException e){
             throw new DomainException("IOException");

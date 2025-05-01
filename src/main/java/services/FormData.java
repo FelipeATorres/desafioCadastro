@@ -53,7 +53,8 @@ public class FormData {
             sc.nextLine();
             String name = sc.nextLine().trim();
             PetName.verify(name);
-            pet.setName(Capitalize.strings(name));
+            name = Capitalize.strings(name);
+            pet.setName(name);
             line = br.readLine();
 
             /// tipo do pet cachorro/gato
@@ -76,7 +77,7 @@ public class FormData {
             System.out.println("III. Rua: ");
             String street = sc.nextLine();
             String address = "";
-            address = address.concat(street + ", " + numHouse + ", " + city);
+            address = address.concat(street + ", " + IsNull.verifyInt(numHouse) + ", " + city);
             pet.setAddress(address);
             line = br.readLine();
 
@@ -100,7 +101,8 @@ public class FormData {
             System.out.println(line);
             String breed = sc.nextLine();
             SpecialCharacterString.verify(breed);
-            pet.setBreed(Capitalize.strings(breed));
+            breed = Capitalize.strings(breed);
+            pet.setBreed(breed);
         }
     }
 }
