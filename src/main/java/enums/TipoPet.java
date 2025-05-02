@@ -1,6 +1,6 @@
 package enums;
 
-public enum PetType {
+public enum TipoPet {
     CACHORRO,
     GATO;
 }

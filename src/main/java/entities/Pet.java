@@ -1,83 +1,83 @@
 package entities;
 
-import enums.PetSex;
-import enums.PetType;
+import enums.SexoPet;
+import enums.TipoPet;
 
 public class Pet {
-    private String name;
-    private PetType petType;
-    private PetSex petSex;
-    private String address;
-    private Double age;
-    private Double weight;
-    private String breed;
+    private String nome;
+    private TipoPet tipoPet;
+    private SexoPet sexoPet;
+    private String endereco;
+    private Double idade;
+    private Double peso;
+    private String raca;
 
     public Pet(){
     }
 
-    public Pet(String name, PetType petType, PetSex petSex, String address, Double age, Double weight, String breed) {
-        this.name = name;
-        this.petType = petType;
-        this.petSex = petSex;
-        this.address = address;
-        this.age = age;
-        this.weight = weight;
-        this.breed = breed;
+    public Pet(String nome, TipoPet tipoPet, SexoPet sexoPet, String endereco, Double idade, Double peso, String raca) {
+        this.nome = nome;
+        this.tipoPet = tipoPet;
+        this.sexoPet = sexoPet;
+        this.endereco = endereco;
+        this.idade = idade;
+        this.peso = peso;
+        this.raca = raca;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public PetType getPetType() {
-        return petType;
+    public TipoPet getPetType() {
+        return tipoPet;
     }
 
-    public void setPetType(PetType petType) {
-        this.petType = petType;
+    public void setPetType(TipoPet tipoPet) {
+        this.tipoPet = tipoPet;
     }
 
-    public PetSex getPetSex() {
-        return petSex;
+    public SexoPet getPetSex() {
+        return sexoPet;
     }
 
-    public void setPetSex(PetSex petSex) {
-        this.petSex = petSex;
+    public void setPetSex(SexoPet sexoPet) {
+        this.sexoPet = sexoPet;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    public Double getAge() {
-        return age;
+    public Double getIdade() {
+        return idade;
     }
 
-    public void setAge(Double age) {
-        this.age = age;
+    public void setIdade(Double idade) {
+        this.idade = idade;
     }
 
-    public Double getWeight() {
-        return weight;
+    public Double getPeso() {
+        return peso;
     }
 
-    public void setWeight(Double weight) {
-        this.weight = weight;
+    public void setPeso(Double peso) {
+        this.peso = peso;
     }
 
-    public String getBreed() {
-        return breed;
+    public String getRaca() {
+        return raca;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
+    public void setRaca(String raca) {
+        this.raca = raca;
     }
 }

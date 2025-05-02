@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class InitialMenu {
+public class MenuInicial {
     public static void print(){
         System.out.println(
                 "\nMENU INICIAL\n" +
@@ -20,20 +20,22 @@ public class InitialMenu {
                 "6. Sair\n");
     }
 
-    public static void menuChoice(Scanner sc, Path form) throws DomainException {
+    public static void escolhaMenu(Scanner sc, Path form) throws DomainException {
         try {
             System.out.print("Digite uma opção: ");
-            int choice = sc.nextInt();
-            if (choice <= 0)
+            int escolha = sc.nextInt();
+            sc.nextLine();
+            if (escolha <= 0)
                 throw new DomainException("Não é possível digitar um número 0 ou negativo.");
-            switch (choice) {
+            switch (escolha) {
                 case 1:
                     Pet pet = new Pet();
-                    FormData.formReader(sc,form,pet);
-                    PetData.save(pet);
+                    InfoFormulario.lerForm(sc,form,pet);
+                    InformacoesPet.save(pet);
                     break;
                 case 2:
-                    System.out.println("Alterar dados");
+                    ProcurarPetInfo.menu();
+                    ProcurarPetInfo.criterios(sc);
                     break;
                 case 3:
                     System.out.println("Deletar um pet");

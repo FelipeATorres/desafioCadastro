@@ -1,8 +1,8 @@
 package org.example;
 
-import services.FormData;
+import services.InfoFormulario;
 import exceptions.DomainException;
-import services.InitialMenu;
+import services.MenuInicial;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,15 +15,15 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Path direct = Paths.get("src/main/java/arquivos");
-        Path form = Paths.get(direct.toString(), "formulario.txt");
+        Path diretorio = Paths.get("src/main/java/arquivos");
+        Path form = Paths.get(diretorio.toString(), "formulario.txt");
 
         while (true) {
             try {
-                FormData.formWriter(direct, form);
+                InfoFormulario.escreverForm(diretorio, form);
 
-                InitialMenu.print();
-                InitialMenu.menuChoice(sc,form);
+                MenuInicial.print();
+                MenuInicial.escolhaMenu(sc,form);
 
             }
             catch (IOException | DomainException e) {
