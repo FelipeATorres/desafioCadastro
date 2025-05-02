@@ -5,6 +5,8 @@ import exceptions.DomainException;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -34,11 +36,14 @@ public class MenuInicial {
                     InformacoesPet.save(pet);
                     break;
                 case 2:
+                    List<Path> arquivosEncontrados = new ArrayList<>();
                     ProcurarPetInfo.menu();
-                    ProcurarPetInfo.criterios(sc);
+                    ProcurarPetInfo.criterios(sc, arquivosEncontrados);
                     break;
                 case 3:
-                    System.out.println("Deletar um pet");
+                    List<Path> arquivosEncont = new ArrayList<>();
+                    ProcurarPetInfo.menu();
+                    ProcurarPetInfo.criterios(sc, arquivosEncont);
                     break;
                 case 4:
                     System.out.println("Listar todos os pets");

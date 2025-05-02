@@ -27,7 +27,7 @@ public class Main {
 
             }
             catch (IOException | DomainException e) {
-                System.err.println("\nERRO: " + e.getMessage() + "\n");
+                System.err.println("ERRO: " + e.getMessage() + "\n");
             }
         }
     }
