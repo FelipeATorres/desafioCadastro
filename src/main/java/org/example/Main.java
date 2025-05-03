@@ -15,15 +15,17 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
+
         Path diretorio = Paths.get("src/main/java/arquivos");
         Path form = Paths.get(diretorio.toString(), "formulario.txt");
+        int escolha = 0;
 
-        while (true) {
+        while (escolha != 6) {
             try {
                 InfoFormulario.escreverForm(diretorio, form);
 
                 MenuInicial.print();
-                MenuInicial.escolhaMenu(sc,form);
+                escolha = MenuInicial.escolhaMenu(sc,form, escolha);
 
             }
             catch (IOException | DomainException e) {

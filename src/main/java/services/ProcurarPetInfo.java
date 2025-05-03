@@ -29,6 +29,8 @@ public class ProcurarPetInfo {
 
     public static void criterios(Scanner sc, List<Path> arquivosEncontrados)
             throws IOException, DomainException {
+        System.out.print("Primeiramente, qual o tipo do seu pet (Cachorro/Gato)? ");
+        String tipoEscolhido = Capitalizar.strings(sc.nextLine());
         System.out.print("Qual o critério de busca? ");
         String criterio1 = sc.nextLine();
         System.out.print("Deseja adicionar outro critério à busca? ");
@@ -40,8 +42,6 @@ public class ProcurarPetInfo {
         }
 
         System.out.println("Digite as informações de busca: ");
-        System.out.print("Tipo: ");
-        String tipoEscolhido = Capitalizar.strings(sc.nextLine());
         System.out.print(Capitalizar.strings(criterio1) + ": ");
         String escolha1 = Capitalizar.strings(sc.nextLine());
         String escolha2 = "";
@@ -68,6 +68,7 @@ public class ProcurarPetInfo {
                 String tipoPet = "", nomePet = "", sexoPet = "", enderecoPet = "",
                         idadePet = "", pesoPet = "", racaPet = "";
 
+                /// Seta cada linha para sua respectiva variável.
                 for (String linha : linhas){
                     if (linha.startsWith("1"))
                         nomePet = linha.substring(4).trim();
@@ -85,8 +86,10 @@ public class ProcurarPetInfo {
                         racaPet = linha.substring(4).trim();
                 }
 
+                /// verifica se o tipo do animal escolhido está presente.
                 temTipo = tipoEscolhido.equalsIgnoreCase(tipoPet);
 
+                /// verifica se o critério 1 é atendido.
                 temCriterio1 = switch (criterio1.toLowerCase()) {
                     case "nome" -> nomePet.contains(escolha1);
                     case "sexo" -> sexoPet.contains(escolha1);
@@ -97,6 +100,7 @@ public class ProcurarPetInfo {
                     default -> false;
                 };
 
+                /// verifica se o critério 2 é atendido.
                 if (!criterio2.isEmpty()) {
                     temCriterio2 = switch (criterio2) {
                         case "nome" -> nomePet.contains(escolha2);
@@ -109,6 +113,7 @@ public class ProcurarPetInfo {
                     };
                 }
 
+                /// Se for encontrado algum pet, ele lança uma saida com as respectivas informações.
                 if(temTipo && temCriterio1 && temCriterio2) {
                     if (numPetsEncontrados == 0)
                         System.out.println("\nLISTA DE PETS ENCONTRADOS");
@@ -120,6 +125,7 @@ public class ProcurarPetInfo {
                 }
 
             }
+            /// Caso não encontre nenhum pet com esses critérios, lança uma saida dizendo que não foi encontrado.
             if (numPetsEncontrados == 0) {
                 throw new DomainException("Nenhum pet encontrado com base nos critérios digitados.");
             }

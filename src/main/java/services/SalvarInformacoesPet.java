@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class InformacoesPet {
+public class SalvarInformacoesPet {
     private static final Path cadastros = Paths.get("src/main/java/arquivos/petsCadastrados");
     private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
 

@@ -22,10 +22,10 @@ public class MenuInicial {
                 "6. Sair\n");
     }
 
-    public static void escolhaMenu(Scanner sc, Path form) throws DomainException {
+    public static int escolhaMenu(Scanner sc, Path form, int escolha) throws DomainException {
         try {
             System.out.print("Digite uma opção: ");
-            int escolha = sc.nextInt();
+            escolha = sc.nextInt();
             sc.nextLine();
             if (escolha <= 0)
                 throw new DomainException("Não é possível digitar um número 0 ou negativo.");
@@ -33,12 +33,13 @@ public class MenuInicial {
                 case 1:
                     Pet pet = new Pet();
                     InfoFormulario.lerForm(sc,form,pet);
-                    InformacoesPet.save(pet);
+                    SalvarInformacoesPet.save(pet);
                     break;
                 case 2:
                     List<Path> arquivosEncontrados = new ArrayList<>();
                     ProcurarPetInfo.menu();
                     ProcurarPetInfo.criterios(sc, arquivosEncontrados);
+                    AlterarDadosPet.escolherDadosAlterar(sc, arquivosEncontrados);
                     break;
                 case 3:
                     List<Path> arquivosEncont = new ArrayList<>();
@@ -52,7 +53,7 @@ public class MenuInicial {
                     System.out.println("Listar pets por algum critério");
                     break;
                 case 6:
-                    System.out.println("Sair");
+                    System.out.println("Saindo do programa...");
                     break;
                 default:
                     break;
@@ -62,5 +63,6 @@ public class MenuInicial {
             sc.nextLine();
             throw new DomainException("Digite um número válido!");
         }
+        return escolha;
     }
 }
