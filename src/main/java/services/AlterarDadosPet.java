@@ -6,7 +6,6 @@ import utils.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -93,7 +92,7 @@ public class AlterarDadosPet {
                 }
             }
         }
-        catch (InputMismatchException | IOException e){
+        catch (IOException e){
             throw new DomainException("IOException");
         }
     }

@@ -27,8 +27,7 @@ public class MenuInicial {
             System.out.print("Digite uma opção: ");
             escolha = sc.nextInt();
             sc.nextLine();
-            if (escolha <= 0)
-                throw new DomainException("Não é possível digitar um número 0 ou negativo.");
+
             switch (escolha) {
                 case 1:
                     Pet pet = new Pet();
@@ -45,12 +44,15 @@ public class MenuInicial {
                     List<Path> arquivosEncont = new ArrayList<>();
                     ProcurarPetInfo.menu();
                     ProcurarPetInfo.criterios(sc, arquivosEncont);
+                    ApagarPetCadastrado.apagar(sc, arquivosEncont);
                     break;
                 case 4:
-                    System.out.println("Listar todos os pets");
+                    ListarPets.listar();
                     break;
                 case 5:
-                    System.out.println("Listar pets por algum critério");
+                    List<Path> arquivosEncon = new ArrayList<>();
+                    ProcurarPetInfo.menu();
+                    ProcurarPetInfo.criterios(sc, arquivosEncon);
                     break;
                 case 6:
                     System.out.println("Saindo do programa...");
@@ -58,6 +60,10 @@ public class MenuInicial {
                 default:
                     break;
             }
+            if (escolha <= 0)
+                throw new DomainException("Não é possível digitar um número 0 ou negativo.");
+            if (escolha > 6)
+                throw new DomainException(("Por favor digite apenas um número dentre as opções."));
         }
         catch (NoSuchElementException | IOException e){
             sc.nextLine();
